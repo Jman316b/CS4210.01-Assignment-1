@@ -1,9 +1,9 @@
 #-------------------------------------------------------------------------
 # AUTHOR: Jeremiah Garcia
 # FILENAME: decision_tree.py
-# SPECIFICATION: this program processes an input file 
+# SPECIFICATION: this program processes an input file into a decision tree
 # FOR: CS 4210- Assignment #1
-# TIME SPENT: 52 minutes
+# TIME SPENT: 2 Hours
 #-----------------------------------------------------------*/
 
 #IMPORTANT NOTE: DO NOT USE ANY ADVANCED PYTHON LIBRARY TO COMPLETE THIS CODE SUCH AS numpy OR pandas. You have to work here only with standard
@@ -34,11 +34,11 @@ with open('contact_lens.csv', 'r') as csvfile:
 # Separated it I will do it in two separate passes
 for i, row in enumerate(db):
     for j, column in enumerate(row):
-        if j / 4 == 0:
-            break
+        if j == 4:
+            continue
 
         if column == "Young":
-            X[i][j].insert(1)
+            X[i][j] = 1
         elif column == "Prepresbyopic":
             X[i][j] = 2
         elif column == "Presbyopic":
@@ -66,8 +66,9 @@ for i, row in enumerate(db):
 
 for i, row in enumerate(db):
     for j, column in enumerate(row):
-        if j / 4 != 0:
-            break
+        if j != 4:
+            continue
+
         if column == "Yes":
             Y.append(1)
         elif column == "No":
